@@ -1,10 +1,33 @@
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { UsersModule } from './users/users.module';
+import { dataSourceOptions } from '../db/data-source';
+import { AuthModule } from './authentication/auth.module';
+import { ConfigModule } from '@nestjs/config';
+import { APP_GUARD } from '@nestjs/core';
+import { AdminGuard } from './authorization/admin.guard';
+import { OwnerIdGuard } from './authorization/ownerId.guard';
 
 @Module({
-  imports: [],
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    TypeOrmModule.forRoot(dataSourceOptions),
+    UsersModule,
+    AuthModule,
+  ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_GUARD,
+      useClass: AdminGuard,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: OwnerIdGuard,
+    },
+  ],
 })
 export class AppModule {}
