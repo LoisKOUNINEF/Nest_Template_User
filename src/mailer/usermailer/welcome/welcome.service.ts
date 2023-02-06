@@ -3,12 +3,14 @@ import { ConfigService } from '@nestjs/config';
 import * as hbs from 'handlebars';
 import * as fs from 'fs';
 import { SendgridService } from 'src/mailer/sendgrid.service';
+import MailerParams from 'src/mailer/mailer-params.helper';
 
 @Injectable()
 export class WelcomeService {
   constructor(
     private readonly sendgridService: SendgridService,
     private configService: ConfigService,
+    private mailerParams: MailerParams,
   ) {}
 
   public async sendWelcome(email: string) {
@@ -20,8 +22,8 @@ export class WelcomeService {
 
     const messageBody = template({
       email: email,
-      url: 'http://localhost:3000',
-      mainImage: '',
+      url: this.mailerParams.mainUrl,
+      mainImage: this.mailerParams.mainImage,
     });
 
     const mail = {
