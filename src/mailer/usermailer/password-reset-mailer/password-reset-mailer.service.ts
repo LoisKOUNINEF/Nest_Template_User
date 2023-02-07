@@ -32,7 +32,7 @@ export class PasswordResetMailerService {
 
     const mail = {
       to: email,
-      subject: 'Réinitialisation du mot de passe.',
+      subject: 'Reset password.',
       from: this.configService.get('SENDGRID_SENDER'),
       html: messageBody,
     };

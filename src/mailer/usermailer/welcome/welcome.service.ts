@@ -28,7 +28,7 @@ export class WelcomeService {
 
     const mail = {
       to: email,
-      subject: 'Bienvenue !',
+      subject: 'Welcome !',
       from: this.configService.get('SENDGRID_SENDER'),
       html: messageBody,
     };

@@ -7,7 +7,6 @@ export default class MailerParams {
 
   sender = this.configService.get('SENDGRID_SENDER');
   admin = this.configService.get('ADMIN_EMAIL');
-  mainImage =
-    '';
+  mainImage = '';
   mainUrl = this.configService.get('ALLOWED_URL');
 }
