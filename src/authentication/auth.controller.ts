@@ -15,5 +15,4 @@ export class AuthController {
   checkIfAdmin(): boolean {
     return true;
   }
-
 }

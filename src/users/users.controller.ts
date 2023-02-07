@@ -75,7 +75,7 @@ export class UsersController {
   @UseGuards(LocalAuthGuard)
   @Post('login')
   login(@Request() req): any {
-    return { msg: `User ${req.user.email} logged In.` };
+    return req.session.passport.user;
   }
 
   @Post('logout')
