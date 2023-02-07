@@ -4,4 +4,4 @@
 - uncomment .env in gitignore (last line).
 - Fill .env file with required fields.
 
-You can check this [repo] (https://github.com/LoisKOUNINEF/Angular_Template_User) for an Angular implementation using this template.
+You can check this [repo](https://github.com/LoisKOUNINEF/Angular_Template_User) for an Angular implementation using this template.
